@@ -14,7 +14,7 @@ object MoviesListFactoryImpl: MoviesListFactory {
     }
 
     override fun rateMovie(ratedMovie: MovieModel) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
     }
 
     override fun randomRateMovies() {

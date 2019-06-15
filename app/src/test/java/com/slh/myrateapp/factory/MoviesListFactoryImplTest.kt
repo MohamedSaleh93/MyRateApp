@@ -1,5 +1,6 @@
 package com.slh.myrateapp.factory
 
+import com.slh.myrateapp.model.MovieModel
 import org.junit.Test
 
 import org.junit.Assert.*
@@ -19,6 +20,13 @@ class MoviesListFactoryImplTest {
 
     @Test
     fun rateMovie() {
+        val sampleMovieModel = MovieModel("Inception", 1.0)
+        MoviesListFactoryImpl.rateMovie(sampleMovieModel)
+        for (movie in MoviesListFactoryImpl.getMoviesList()) {
+            if (movie.movieName.toLowerCase() == sampleMovieModel.movieName.toLowerCase()) {
+                assertEquals(movie.movieRate, sampleMovieModel.movieRate, 0.0)
+            }
+        }
     }
 
     @Test

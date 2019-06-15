@@ -20,6 +20,7 @@ class MoviesListFactoryImplTest {
 
     @Test
     fun rateMovie() {
+        getMoviesList()
         val sampleMovieModel = MovieModel("Inception", 1.0)
         MoviesListFactoryImpl.rateMovie(sampleMovieModel)
         for (movie in MoviesListFactoryImpl.getMoviesList()) {

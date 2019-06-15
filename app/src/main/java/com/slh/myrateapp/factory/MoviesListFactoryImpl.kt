@@ -14,7 +14,12 @@ object MoviesListFactoryImpl: MoviesListFactory {
     }
 
     override fun rateMovie(ratedMovie: MovieModel) {
-
+        for (i in 0 .. moviesList.size) {
+            if (moviesList[i].movieName.toLowerCase() == ratedMovie.movieName.toLowerCase()) {
+                moviesList[i].movieRate = ratedMovie.movieRate
+                return
+            }
+        }
     }
 
     override fun randomRateMovies() {

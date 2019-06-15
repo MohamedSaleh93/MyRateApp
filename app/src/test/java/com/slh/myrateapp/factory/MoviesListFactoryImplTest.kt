@@ -20,7 +20,7 @@ class MoviesListFactoryImplTest {
 
     @Test
     fun rateMovie() {
-        getMoviesList()
+        MoviesListFactoryImpl.getMoviesList()
         val sampleMovieModel = MovieModel("Inception", 1.0)
         MoviesListFactoryImpl.rateMovie(sampleMovieModel)
         for (movie in MoviesListFactoryImpl.getMoviesList()) {
@@ -32,5 +32,24 @@ class MoviesListFactoryImplTest {
 
     @Test
     fun randomRateMovies() {
+        val listBeforeRandom = ArrayList<MovieModel>()
+        for (movie in MoviesListFactoryImpl.getMoviesList()) {
+            val m = MovieModel(movie.movieName, movie.movieRate)
+            listBeforeRandom.add(m)
+        }
+        MoviesListFactoryImpl.randomRateMovies()
+        val listAfterRandom = MoviesListFactoryImpl.getMoviesList()
+        for (i in 0 until listBeforeRandom.size) {
+            assertNotEquals(listBeforeRandom[i].movieRate, listAfterRandom[i].movieRate)
+        }
+    }
+
+    @Test
+    fun test_randomRateMovies_within_range() {
+        MoviesListFactoryImpl.getMoviesList()
+        MoviesListFactoryImpl.randomRateMovies()
+        for (movie in MoviesListFactoryImpl.getMoviesList()) {
+            assertTrue(movie.movieRate in 0.0..5.0)
+        }
     }
 }

@@ -1,6 +1,8 @@
 package com.slh.myrateapp.factory
 
 import com.slh.myrateapp.model.MovieModel
+import java.text.DecimalFormat
+import kotlin.random.Random
 
 object MoviesListFactoryImpl: MoviesListFactory {
 
@@ -14,16 +16,21 @@ object MoviesListFactoryImpl: MoviesListFactory {
     }
 
     override fun rateMovie(ratedMovie: MovieModel) {
-        for (i in 0 .. moviesList.size) {
+        for (i in 0 until moviesList.size) {
             if (moviesList[i].movieName.toLowerCase() == ratedMovie.movieName.toLowerCase()) {
                 moviesList[i].movieRate = ratedMovie.movieRate
-                return
             }
         }
     }
 
     override fun randomRateMovies() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        val min = 0.0
+        val max = 5.0
+        val r = Random(0)
+        for (i in 0 until moviesList.size) {
+            val nextD = (r.nextDouble((max - min) + 1) + min) % max
+            moviesList[i].movieRate = DecimalFormat("0.0").format(nextD).toDouble()
+        }
     }
 
     private fun buildMoviesList() {

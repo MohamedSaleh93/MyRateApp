@@ -35,6 +35,8 @@ dependencies {
     implementation devLibraries.androidMaterial
     implementation devLibraries.androidXLifecyclerLibrary
     implementation devLibraries.androidConstraintLayout
+    implementation devLibraries.rxJavaLibrary
+    implementation devLibraries.rxAndroidLibrary
 
     testImplementation testLibraries.junitLibrary
     androidTestImplementation testLibraries.androidTestRunner

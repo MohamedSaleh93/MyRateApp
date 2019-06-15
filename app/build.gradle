@@ -41,6 +41,7 @@ dependencies {
     testImplementation testLibraries.junitLibrary
     testImplementation testLibraries.mockitoLibrary
     testImplementation testLibraries.mockitoInlineLibrary
+    testImplementation testLibraries.androidXTestCoreLibrary
     androidTestImplementation testLibraries.androidTestRunner
     androidTestImplementation testLibraries.androidTestEspresso
 }

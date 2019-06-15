@@ -52,7 +52,7 @@ ext {
             rxAndroidLibrary : "io.reactivex.rxjava2:rxandroid:$rxAndroidVersion",
             rxRetrofitAdapterLibrary : "com.squareup.retrofit2:adapter-rxjava2:$rxRetrofitAdapterVersion",
             androidXViewModelLibrary : "androidx.lifecycle:lifecycle-viewmodel-ktx:$androidXViewModelVersion",
-            androidXLifecyclerLibrary : "android.arch.lifecycle:extensions:$androidXLifecyclerVersion",
+            androidXLifecyclerLibrary : "android.arch.lifecycle:extensions:$androidXLifecyclerVersion"
     ]
 
     // testing
@@ -65,7 +65,8 @@ ext {
             androidTestRunner : "androidx.test:runner:$androidXTestRunner",
             androidTestEspresso : "androidx.test.espresso:espresso-core:$androidXTestEspresso",
             mockitoLibrary : "org.mockito:mockito-core:$mockitoVersion",
-            mockitoInlineLibrary : "org.mockito:mockito-inline:$mockitoInlineVersion"
+            mockitoInlineLibrary : "org.mockito:mockito-inline:$mockitoInlineVersion",
+            androidXTestCoreLibrary : "androidx.arch.core:core-testing:${androidXViewModelVersion}"
     ]
 
 }

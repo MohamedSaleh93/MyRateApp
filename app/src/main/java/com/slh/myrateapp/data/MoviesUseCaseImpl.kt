@@ -2,19 +2,28 @@ package com.slh.myrateapp.data
 
 import com.slh.myrateapp.model.MovieModel
 import io.reactivex.Completable
+import io.reactivex.Scheduler
 import io.reactivex.Single
 
-class MoviesUseCaseImpl(val moviesLocalDataSource: MoviesDataSource): MoviesUseCase {
+class MoviesUseCaseImpl(val moviesLocalDataSource: MoviesDataSource,
+                        val subscribeOnThread: Scheduler,
+                        val observeOnThread: Scheduler): MoviesUseCase {
 
     override fun getMoviesList(): Single<List<MovieModel>> {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return moviesLocalDataSource.getMoviesList()
+            .subscribeOn(subscribeOnThread)
+            .observeOn(observeOnThread)
     }
 
     override fun rateMovie(ratedMovie: MovieModel): Completable {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return moviesLocalDataSource.rateMovie(ratedMovie)
+            .subscribeOn(subscribeOnThread)
+            .observeOn(observeOnThread)
     }
 
     override fun randomRateMovies(): Completable {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return moviesLocalDataSource.randomRateMovies()
+            .subscribeOn(subscribeOnThread)
+            .observeOn(observeOnThread)
     }
 }

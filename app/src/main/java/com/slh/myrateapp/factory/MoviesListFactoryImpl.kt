@@ -7,6 +7,7 @@ object MoviesListFactoryImpl: MoviesListFactory {
     private var moviesList = ArrayList<MovieModel>()
 
     override fun getMoviesList(): List<MovieModel> {
+        buildMoviesList()
         return moviesList
     }
 

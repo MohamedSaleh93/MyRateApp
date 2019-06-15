@@ -12,6 +12,12 @@ class MoviesListFactoryImplTest {
     }
 
     @Test
+    fun test_call_getMoviesList_more_than_one_time() {
+        MoviesListFactoryImpl.getMoviesList()
+        assertEquals(MoviesListFactoryImpl.getMoviesList().size, 10)
+    }
+
+    @Test
     fun rateMovie() {
     }
 

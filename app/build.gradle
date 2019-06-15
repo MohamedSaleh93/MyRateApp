@@ -5,15 +5,16 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 android {
-    compileSdkVersion 29
-    buildToolsVersion "29.0.0"
+    def globalConfiguration = rootProject.ext
+    compileSdkVersion globalConfiguration.androidCompileSdkVersion
+    buildToolsVersion globalConfiguration.androidBuildToolsVersion
     defaultConfig {
-        applicationId "com.slh.myrateapp"
-        minSdkVersion 15
-        targetSdkVersion 29
-        versionCode 1
-        versionName "1.0"
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        applicationId globalConfiguration.applicationId
+        minSdkVersion globalConfiguration.androidMinSdkVersion
+        targetSdkVersion globalConfiguration.androidTargetSdkVersion
+        versionCode globalConfiguration.appVersionCode
+        versionName globalConfiguration.appVersionName
+        testInstrumentationRunner globalConfiguration.testInstrumentationRunner
     }
     buildTypes {
         release {
@@ -24,11 +25,18 @@ android {
 }
 
 dependencies {
+    def devLibraries = rootProject.ext.Libraries
+    def testLibraries = rootProject.ext.TestLibraries
+
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'androidx.appcompat:appcompat:1.0.2'
-    implementation 'androidx.core:core-ktx:1.0.2'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test:runner:1.2.0'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    implementation devLibraries.jetbrains_kotlin
+    implementation devLibraries.appCompat
+    implementation devLibraries.androidCore
+    implementation devLibraries.androidMaterial
+    implementation devLibraries.androidXLifecyclerLibrary
+    implementation devLibraries.androidConstraintLayout
+
+    testImplementation testLibraries.junitLibrary
+    androidTestImplementation testLibraries.androidTestRunner
+    androidTestImplementation testLibraries.androidTestEspresso
 }

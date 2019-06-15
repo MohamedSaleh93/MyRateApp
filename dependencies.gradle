@@ -1,0 +1,79 @@
+ext {
+
+    // Application
+    applicationId = "com.slh.myrateapp"
+    appVersionName = "1.0"
+    appVersionCode = 1
+
+    // Android
+    kotlinVersion = '1.3.31'
+    androidCompileSdkVersion = 28
+    androidBuildToolsVersion = "29.0.0"
+    androidMinSdkVersion = 19
+    androidTargetSdkVersion = 28
+    testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+
+    // development
+    appCompatVersion = '1.0.2'
+    androidXCoreVersion = '1.0.2'
+    androidXViewModelVersion = '2.0.0'
+    androidXLifecyclerVersion = '1.1.0'
+    androidMaterialVersion = '1.0.0'
+    androidXconstraintlayoutVersion = '1.1.3'
+
+    retrofitVersion = '2.6.0'
+    retrofitGsonConverterVersion = retrofitVersion
+    okHttpVersion = '3.12.0'
+    okHttpLoggingInterceptorVersion = okHttpVersion
+    gsonVersion = '2.8.5'
+
+    rxJavaVersion = '2.2.9'
+    rxAndroidVersion = '2.1.1'
+    rxRetrofitAdapterVersion = '2.6.0'
+
+    countryCodePickerVersion = '2.2.9'
+    barcodeReaderVersion = '1.9.13'
+
+    // library to handle needed permissions
+    dexterVersion = '5.0.0'
+
+
+
+    Libraries = [
+            jetbrains_kotlin : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version",
+            appCompat : "androidx.appcompat:appcompat:$appCompatVersion",
+            androidCore : "androidx.core:core-ktx:$androidXCoreVersion",
+            androidMaterial : "com.google.android.material:material:$androidMaterialVersion",
+            androidConstraintLayout : "androidx.constraintlayout:constraintlayout:$androidXconstraintlayoutVersion",
+            retrofitLibrary : "com.squareup.retrofit2:retrofit:$retrofitVersion",
+            gsonLibrary : "com.google.code.gson:gson:$gsonVersion",
+            retroftGsonConverterLibrary : "com.squareup.retrofit2:converter-gson:$retrofitGsonConverterVersion",
+            okHttpLibrary :"com.squareup.okhttp3:okhttp:$okHttpVersion",
+            okHttpLoggingInterceptorLibrary : "com.squareup.okhttp3:logging-interceptor:$okHttpLoggingInterceptorVersion",
+            rxJavaLibrary : "io.reactivex.rxjava2:rxjava:$rxJavaVersion",
+            rxAndroidLibrary : "io.reactivex.rxjava2:rxandroid:$rxAndroidVersion",
+            rxRetrofitAdapterLibrary : "com.squareup.retrofit2:adapter-rxjava2:$rxRetrofitAdapterVersion",
+            androidXViewModelLibrary : "androidx.lifecycle:lifecycle-viewmodel-ktx:$androidXViewModelVersion",
+            androidXLifecyclerLibrary : "android.arch.lifecycle:extensions:$androidXLifecyclerVersion",
+            codeCountryPickerLibrary : "com.hbb20:ccp:$countryCodePickerVersion",
+            barcodeReaderLibrary : "me.dm7.barcodescanner:zxing:$barcodeReaderVersion",
+            dexterLibrary : "com.karumi:dexter:$dexterVersion"
+    ]
+
+    // testing
+    jUnitVersion = '4.12'
+    androidXTestRunner = '1.1.1'
+    androidXTestEspresso = '3.1.1'
+
+    TestLibraries = [
+            junitLibrary : "junit:junit:$jUnitVersion",
+            androidTestRunner : "androidx.test:runner:$androidXTestRunner",
+            androidTestEspresso : "androidx.test.espresso:espresso-core:$androidXTestEspresso"
+    ]
+
+}
+
+
+
+

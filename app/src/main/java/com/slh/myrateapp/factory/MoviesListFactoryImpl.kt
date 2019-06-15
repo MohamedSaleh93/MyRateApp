@@ -7,7 +7,7 @@ object MoviesListFactoryImpl: MoviesListFactory {
     private var moviesList = ArrayList<MovieModel>()
 
     override fun getMoviesList(): List<MovieModel> {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return moviesList
     }
 
     override fun rateMovie(ratedMovie: MovieModel) {

@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">MyRateApp</string>
+    <string name="rate_movies_random">Rate movies</string>
+    <string name="stop_rate_movies_random">Stop rating movies</string>
 </resources>

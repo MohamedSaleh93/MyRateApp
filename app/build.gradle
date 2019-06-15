@@ -39,6 +39,8 @@ dependencies {
     implementation devLibraries.rxAndroidLibrary
 
     testImplementation testLibraries.junitLibrary
+    testImplementation testLibraries.mockitoLibrary
+    testImplementation testLibraries.mockitoInlineLibrary
     androidTestImplementation testLibraries.androidTestRunner
     androidTestImplementation testLibraries.androidTestEspresso
 }

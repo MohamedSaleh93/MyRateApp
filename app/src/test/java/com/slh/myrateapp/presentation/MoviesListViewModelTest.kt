@@ -15,6 +15,7 @@ import org.mockito.Mock
 import org.mockito.Mockito
 import org.mockito.MockitoAnnotations
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+import io.reactivex.Completable
 import org.junit.Rule
 import java.lang.Exception
 
@@ -59,6 +60,16 @@ class MoviesListViewModelTest {
 
     @Test
     fun randomRateMovies() {
+        Mockito.`when`(moviesUseCase.randomRateMovies()).thenReturn(Completable.complete())
+        moviesViewMovieModel.randomRateMovies()
+        assertEquals(moviesViewMovieModel.randomRateMoviesObservable.value, true)
+    }
+
+    @Test
+    fun test_exception_randomRateMovies() {
+        Mockito.`when`(moviesUseCase.randomRateMovies()).thenReturn(Completable.error(Throwable()))
+        moviesViewMovieModel.randomRateMovies()
+        assertEquals(moviesViewMovieModel.randomRateMoviesObservable.value, false)
     }
 
     private fun buildMoviesMockList(): List<MovieModel> {

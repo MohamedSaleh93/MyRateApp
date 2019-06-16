@@ -14,9 +14,16 @@ import org.junit.Before
 import org.mockito.Mock
 import org.mockito.Mockito
 import org.mockito.MockitoAnnotations
+import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+import org.junit.Rule
+import java.lang.Exception
+
 
 class MoviesListViewModelTest {
 
+    @Rule
+    @JvmField
+    val rule = InstantTaskExecutorRule()
     @Mock
     lateinit var moviesUseCase: MoviesUseCase
 
@@ -29,12 +36,22 @@ class MoviesListViewModelTest {
         RxAndroidPlugins.setInitMainThreadSchedulerHandler { Schedulers.trampoline() }
         moviesViewMovieModel = MoviesListViewModel(moviesUseCase)
     }
+
     @Test
     fun getMoviesList() {
-        Mockito.`when`(moviesUseCase.getMoviesList()).thenReturn(Single.just(buildMoviesMockList()))
+        val mockedList = buildMoviesMockList()
+        Mockito.`when`(moviesUseCase.getMoviesList()).thenReturn(Single.just(mockedList))
         moviesViewMovieModel.getMoviesList()
-        assertEquals(moviesViewMovieModel.moviesListObservable.value?.size, buildMoviesMockList().size)
+        assertEquals(moviesViewMovieModel.moviesListObservable.value, mockedList)
     }
+
+    @Test
+    fun test_exception_getMoviesList() {
+        Mockito.`when`(moviesUseCase.getMoviesList()).thenReturn(Single.error(Throwable()))
+        moviesViewMovieModel.getMoviesList()
+        assertEquals(moviesViewMovieModel.moviesListObservable.value, null)
+    }
+
 
     @Test
     fun rateMovie() {

@@ -14,7 +14,12 @@ class MoviesListViewModel(val moviesUseCase: MoviesUseCase): ViewModel() {
     private val compositeDisposable = CompositeDisposable()
 
     fun getMoviesList() {
-
+        compositeDisposable.add(moviesUseCase.getMoviesList()
+            .subscribe({
+                moviesListObservable.value = it
+            }, {
+                moviesListObservable.value = null
+            }))
     }
 
     fun rateMovie(ratedMovie: MovieModel) {

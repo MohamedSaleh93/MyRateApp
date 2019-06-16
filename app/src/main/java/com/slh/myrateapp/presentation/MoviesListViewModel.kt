@@ -11,6 +11,8 @@ class MoviesListViewModel(val moviesUseCase: MoviesUseCase): ViewModel() {
 
     val moviesListObservable = MutableLiveData<List<MovieModel>>()
 
+    val randomRateMoviesObservable = MutableLiveData<Boolean>()
+
     private val compositeDisposable = CompositeDisposable()
 
     fun getMoviesList() {
@@ -23,11 +25,17 @@ class MoviesListViewModel(val moviesUseCase: MoviesUseCase): ViewModel() {
     }
 
     fun rateMovie(ratedMovie: MovieModel) {
-
+        compositeDisposable.add(moviesUseCase.rateMovie(ratedMovie)
+            .subscribe())
     }
 
     fun randomRateMovies() {
-
+        compositeDisposable.add(moviesUseCase.randomRateMovies()
+            .subscribe({
+                randomRateMoviesObservable.value = true
+            }, {
+                randomRateMoviesObservable.value = false
+            }))
     }
 
     override fun onCleared() {
